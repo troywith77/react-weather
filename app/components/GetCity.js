@@ -47,16 +47,26 @@ var styles = {
   maxWidth: 300,
 }
 
+function getStyles(props) {
+  return {
+    display: 'flex',
+    flexDirection: props.direction || 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    maxWidth: 300,
+    alignSelf: 'right'
+  }
+}
+
 class GetCity extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
+  }
+  componentDidMount() {
   }
   render() {
     return (
-      <div style={styles}>
+      <div style={getStyles(this.props)}>
         <Input
         city={this.props.city}
         onUpdateCity={this.props.onUpdateCity}
