@@ -4,6 +4,9 @@ var GetCity = require('../components/GetCity');
 var api = require('../helpers/api');
 
 var GetCityContainer = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getDefaultProps() {
     return {
       direction: 'column'
@@ -16,7 +19,8 @@ var GetCityContainer = React.createClass({
   },
   handleSubmitCity() {
     console.log(this.state.city);
-    api.getCurrentWeather(this.state.city);
+    this.context.router.push('/forecast/' + this.state.city)
+    // api.getCurrentWeather(this.state.city);
   },
   handleUpdateCity(e) {
     this.setState({city: e.target.value})

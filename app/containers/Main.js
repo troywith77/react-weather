@@ -21,7 +21,7 @@ var Main = React.createClass({
     return (
       <div style={styles.container}>
         <div style={styles.header}>
-          <h1>Main.js Header</h1>
+          <h1 style={{marginBottom: 20}}>Clever Weather</h1>
           <GetCityContainer direction='row' />
         </div>
           {this.props.children}
