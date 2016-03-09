@@ -4,8 +4,8 @@
   "description": "Curriculum for React.js Program's React Fundamentals course.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline",
-    "prod": "webpack -p"
+    "start": "webpack-dev-server --inline --content-base dist/ --history-api-fallback",
+    "start:prod": "webpack -p && node server.js"
   },
   "repository": {
     "type": "git",
