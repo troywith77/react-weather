@@ -29,7 +29,6 @@ class ForecastContainer extends React.Component{
   render() {
     return (
       <div>
-        Hello {this.props.params.city}
         <Forecast
         city={this.props.params.city}
         isLoading={this.state.isLoading}
