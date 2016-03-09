@@ -1,5 +1,6 @@
 var React = require('react');
 var GetCityContainer = require('../containers/GetCityContainer');
+import {Link} from 'react-router'
 
 var styles = {
   container: {
@@ -13,6 +14,10 @@ var styles = {
     background: 'rgba(252, 90, 44, 0.89)',
     color: '#fff',
     padding: 5,
+  },
+  link: {
+    color: '#fff',
+    textDecoration: 'none'
   }
 }
 
@@ -21,7 +26,9 @@ var Main = React.createClass({
     return (
       <div style={styles.container}>
         <div style={styles.header}>
-          <h1 style={{marginBottom: 20}}>Clever Weather</h1>
+          <h1 style={{marginBottom: 20}}>
+            <Link to='/' style={styles.link}>Clever Weather</Link>
+          </h1>
           <GetCityContainer direction='row' />
         </div>
           {this.props.children}
