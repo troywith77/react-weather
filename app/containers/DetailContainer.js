@@ -3,7 +3,6 @@ import Detail from '../components/Detail'
 
 class DetailContainer extends React.Component{
   render() {
-    console.log(this.props.location.state.weather)
     return (
       <Detail
       weather={this.props.location.state.weather}
