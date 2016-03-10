@@ -14,7 +14,7 @@ var GetCityContainer = React.createClass({
   },
   getInitialState() {
     return {
-      city: 'shanghai'
+      city: ''
     }
   },
   handleSubmitCity() {

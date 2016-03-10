@@ -1,6 +1,6 @@
 import React from 'react'
 import Forecast from '../components/Forecast'
-import {getCurrentWeather, getForcast} from '../helpers/api'
+import {getCurrentWeather, getForcast, getPinyin} from '../helpers/api'
 
 var ForecastContainer = React.createClass({
   contextTypes: {
@@ -13,10 +13,29 @@ var ForecastContainer = React.createClass({
     }
   },
   componentDidMount() {
-    this.makeRequest(this.props.params.city)
+    var cityName = this.props.params.city;
+    if(this.ifIsAlpabet(cityName)) {
+      this.makeRequest(cityName)
+    } else {
+      getPinyin(this.props.params.city)
+        .then(function(data) {
+          this.makeRequest(data)
+        }.bind(this))
+    }
   },
   componentWillReceiveProps(nextProps) {
-    this.makeRequest(nextProps.params.city)
+    var cityName = nextProps.params.city;
+    if(this.ifIsAlpabet(cityName)) {
+      this.makeRequest(cityName)
+    } else {
+      getPinyin(nextProps.params.city)
+        .then(function(data) {
+          this.makeRequest(data)
+        }.bind(this))
+    }
+  },
+  ifIsAlpabet(str) {
+    if(escape(str).indexOf('%u') === -1) return true;
   },
   makeRequest(city) {
     getForcast(city)

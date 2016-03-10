@@ -27,14 +27,14 @@ class Button extends React.Component{
   }
   render() {
     return (
-      <button
-      type='button'
+      <input
+      type='submit'
+      value={this.props.children}
       style={{margin: 10}}
       className='btn btn-success'
       onClick={this.props.onSubmitCity}
       >
-      {this.props.children}
-      </button>
+      </input>
     )
   }
 }
@@ -62,11 +62,12 @@ class GetCity extends React.Component{
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
+  handleSubmit(e) {
+    e.preventDefault();
   }
   render() {
     return (
-      <div style={getStyles(this.props)}>
+      <form style={getStyles(this.props)} onSubmit={this.handleSubmit.bind(this)}>
         <Input
         city={this.props.city}
         onUpdateCity={this.props.onUpdateCity}
@@ -75,7 +76,7 @@ class GetCity extends React.Component{
         onSubmitCity={this.props.onSubmitCity}>
         Get Weather
         </Button>
-      </div>
+      </form>
     )
   }
 }

@@ -43,7 +43,18 @@ function getForcast (city) {
     })
 }
 
+function getPinyin(cityName) {
+  return axios({
+    method: 'GET',
+    url: 'http://apis.baidu.com/sillystudio/service/topy?words=' + cityName,
+    headers: {'apiKey': '2eb9ca3f1ecb864ba11fa11e7154abc6'}
+  }).then(function(data) {
+      return data.data.py;
+  })
+}
+
 module.exports = {
   getCurrentWeather: getCurrentWeather,
-  getForcast: getForcast
+  getForcast: getForcast,
+  getPinyin: getPinyin
 };
