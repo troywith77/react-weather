@@ -25,7 +25,7 @@ function DayItem(props) {
   var icon = props.day.weather[0].icon;
   return (
     <div style={styles.dayContainer} onClick={props.handleClick}>
-      <img style={styles.weather} src={'/images/weather-icons/' + icon + '.svg'} />
+      <img style={styles.weather} src={'./app/images/weather-icons/' + icon + '.svg'} />
       <h2 style={styles.subHeader}>{date}</h2>
     </div>
   )

@@ -7,7 +7,7 @@ var styles = {
     width: '100%',
     height: '100%',
     backgroundSize: 'cover',
-    backgroundImage: 'url("/images/pattern.svg")',
+    backgroundImage: 'url("app/images/pattern.svg")',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
