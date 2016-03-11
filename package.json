@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base dist/ --history-api-fallback"
+    "start": "webpack-dev-server --inline --content-base dist/ --history-api-fallback",
+    "prod": "webpack -p && node server"
   },
   "author": "Troy (http://github.com/troywith77)",
   "license": "MIT",

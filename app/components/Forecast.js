@@ -39,7 +39,7 @@ function ForecastUI (props) {
 export default class Forecast extends React.Component{
   render() {
     if(this.props.isLoading) {
-      return (<h1 style={styles.header}> Loading </h1>)
+      return (<h1 style={styles.header}> Loading... </h1>)
     } else {
       return (<ForecastUI city={this.props.city} data={this.props.forecastData} handleClick={this.props.handleClick} />)
     }
