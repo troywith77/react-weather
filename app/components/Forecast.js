@@ -28,8 +28,8 @@ function ForecastUI (props) {
     <div>
       <h1 style={styles.header}>{props.city}</h1>
       <div style={styles.container}>
-        {props.data.list.map(function(item) {
-          return (<DayItem key={item.id} day={item} handleClick={props.handleClick.bind(null, item)} />)
+        {props.data.list.map(function(item, id) {
+          return (<DayItem key={id} day={item} handleClick={props.handleClick.bind(null, item)} />)
         })}
       </div>
     </div>

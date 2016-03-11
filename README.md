@@ -13,3 +13,10 @@
 index_bundle.js:9429 Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `ForecastUI`. See https://fb.me/react-warning-keys for more information.
 ```
 明明我是照着官网的改了，key放在组件里，为什么还是报错。。。
+
+改成这样之后解决了(⊙o⊙)
+```
+{props.data.list.map(function(item, id) {
+  return (<DayItem key={id} day={item} handleClick={props.handleClick.bind(null, item)} />)
+})}
+```
