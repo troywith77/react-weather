@@ -1,6 +1,6 @@
 # open weather using React
 
-- ### 使用React-Router里的browserHistory代替hashHistory之后，链接变干净了，但是还需要把index.html里的用html-webpack-plugin自动生成的index.html文件里的script引用路径改成这样
+- 使用React-Router里的browserHistory代替hashHistory之后，链接变干净了，但是还需要把index.html里的用html-webpack-plugin自动生成的index.html文件里的script引用路径改成这样
 
 ```
 //插件生成的html里的路径
@@ -11,7 +11,7 @@
 
 ```
 
-- ### bug ?
+- bug ?
 
 ```
 {props.data.list.map(function(item) {
