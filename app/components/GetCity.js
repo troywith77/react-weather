@@ -9,7 +9,6 @@ var bootstrap = {
     display: 'inline-block',
     padding: '6px 12px',
     margin: 10,
-    // marginBottom: 0,
     fontSize: '14px',
     fontWeight: 400,
     lineHeight: 1.42857143,
@@ -36,6 +35,7 @@ var bootstrap = {
     color: '#555',
     backgroundColor: '#fff',
     backgroundImage: 'none',
+    outline: 'none',
     border: '1px solid #ccc',
     borderRadius: '4px',
     WebkitBoxShadow: 'inset 0 1px 1px rgba(0,0,0,.075)',
@@ -50,6 +50,11 @@ class Input extends React.Component{
   constructor(props) {
     super(props);
   }
+  handleKeyUp(e) {
+    if(e.keyCode === 13) {
+      this.props.onSubmitCity();
+    }
+  }
   render() {
     return (
       <input
@@ -58,6 +63,7 @@ class Input extends React.Component{
       type='text'
       value={this.props.city}
       onChange={this.props.onUpdateCity}
+      onKeyUp={this.handleKeyUp.bind(this)}
       />
     )
   }
@@ -103,21 +109,18 @@ class GetCity extends React.Component{
   constructor(props) {
     super(props);
   }
-  handleSubmit(e) {
-    e.preventDefault();
-  }
   render() {
     return (
-      <form style={getStyles(this.props)} onSubmit={this.handleSubmit.bind(this)}>
+      <div style={getStyles(this.props)}>
         <Input
         city={this.props.city}
         onUpdateCity={this.props.onUpdateCity}
-        />
+        onSubmitCity={this.props.onSubmitCity}/>
         <Button
         onSubmitCity={this.props.onSubmitCity}>
         Get Weather
         </Button>
-      </form>
+      </div>
     )
   }
 }

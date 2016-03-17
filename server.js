@@ -1,14 +1,16 @@
-var express = require('express');
-var path = require('path');
+var express = require( 'express' );
+var path = require( 'path' );
 
-var app = express();
+var app = express()
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist')))
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.listen(3000, function() {
-  console.log('App is running on port 3000.')
+var PORT = process.env.port || 8080
+
+app.listen(PORT, function() {
+  console.log('You app is running on port ' + PORT)
 })
