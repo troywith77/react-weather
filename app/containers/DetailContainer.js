@@ -1,7 +1,7 @@
 import React from 'react'
 import Detail from '../components/Detail'
 
-class DetailContainer extends React.Component{
+export default class DetailContainer extends React.Component{
   render() {
     return (
       <Detail
@@ -10,5 +10,3 @@ class DetailContainer extends React.Component{
     )
   }
 }
-
-module.exports = DetailContainer

@@ -7,7 +7,7 @@ var IndexRoute = ReactRouter.IndexRoute;
 var Main = require('../containers/Main');
 var HomeContainer = require('../containers/HomeContainer');
 var ForecastContainer = require('../containers/ForecastContainer');
-var DetailContainer = require('../containers/DetailContainer');
+import DetailContainer from '../containers/DetailContainer';
 
 var routes = (
   <Router history={browserHistory}>
