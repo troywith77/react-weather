@@ -1,19 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import store from '../store/store'
 import Forecast from '../components/Forecast'
-import {getCurrentWeather, getForcast, getPinyin} from '../helpers/api'
+import { getCurrentWeather, getForcast, getPinyin } from '../helpers/api'
 
 var ForecastContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: () => {
-    return {
-      isLoading: true,
-      forecastData: {}
-    }
-  },
   componentDidMount() {
     var cityName = this.props.params.city;
+    if(this.props.forecastData) return;
     if(this.ifIsAlpabet(cityName)) {
       this.makeRequest(cityName)
     } else {
@@ -25,13 +22,15 @@ var ForecastContainer = React.createClass({
   },
   componentWillReceiveProps(nextProps) {
     var cityName = nextProps.params.city;
-    if(this.ifIsAlpabet(cityName)) {
-      this.makeRequest(cityName)
-    } else {
-      getPinyin(nextProps.params.city)
-        .then(function(data) {
-          this.makeRequest(data)
-        }.bind(this))
+    if(this.props.params.city !== cityName) {
+      if(this.ifIsAlpabet(cityName)) {
+        this.makeRequest(cityName)
+      } else {
+        getPinyin(nextProps.params.city)
+          .then(function(data) {
+            this.makeRequest(data)
+          }.bind(this))
+      }
     }
   },
   ifIsAlpabet(str) {
@@ -40,11 +39,12 @@ var ForecastContainer = React.createClass({
   makeRequest(city) {
     getForcast(city)
       .then(function (forecastData) {
-        this.setState({
-          isLoading: false,
-          forecastData: forecastData
-        });
-      }.bind(this));
+        store.dispatch({
+          type: 'FETCH_DATA_SUCCESS',
+          forecastData: forecastData,
+          isLoading: false
+        })
+      });
   },
   handleClick(weather) {
     this.context.router.push({
@@ -55,12 +55,14 @@ var ForecastContainer = React.createClass({
     })
   },
   render() {
+    const { isLoading, forecastData } = this.props
+    // console.log(isLoading, forecastData)
     return (
       <div>
         <Forecast
         city={this.props.params.city}
-        isLoading={this.state.isLoading}
-        forecastData={this.state.forecastData}
+        isLoading={isLoading}
+        forecastData={forecastData}
         handleClick={this.handleClick} />
       </div>
     )
@@ -71,4 +73,11 @@ ForecastContainer.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
 
-module.exports = ForecastContainer
+function mapStateToProps(store) {
+  return {
+    isLoading: store.weatherList.isLoading,
+    forecastData: store.weatherList.forecastData
+  }
+}
+
+export default connect(mapStateToProps)(ForecastContainer)

@@ -1,6 +1,7 @@
 var React = require('react');
 var GetCityContainer = require('../containers/GetCityContainer');
 import {Link} from 'react-router'
+import { connect } from 'react-redux'
 
 var styles = {
   container: {
@@ -37,4 +38,4 @@ var Main = React.createClass({
   }
 })
 
-module.exports = Main;
+export default Main;

@@ -1,12 +1,8 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var browserHistory = ReactRouter.browserHistory;
-var IndexRoute = ReactRouter.IndexRoute;
-var Main = require('../containers/Main');
-var HomeContainer = require('../containers/HomeContainer');
-var ForecastContainer = require('../containers/ForecastContainer');
+import React from 'react';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import Main from '../containers/Main';
+import HomeContainer from'../containers/HomeContainer';
+import ForecastContainer from '../containers/ForecastContainer';
 import DetailContainer from '../containers/DetailContainer';
 
 var routes = (
@@ -19,4 +15,4 @@ var routes = (
   </Router>
 );
 
-module.exports = routes;
+export default routes;

@@ -1,5 +1,11 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var routes = require('./config/routes');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import routes from './config/routes';
+import { Provider } from 'react-redux'
+import store from './store/store'
 
-ReactDOM.render(routes, document.getElementById('app'))
+ReactDOM.render(
+  <Provider store={store}>
+    {routes}
+  </Provider>,
+  document.getElementById('app'))
