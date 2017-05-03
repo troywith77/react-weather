@@ -1,4 +1,4 @@
 /node_modules
 npm-debug.log
 .gitignore
-dist/index_bundle.js
+dist/

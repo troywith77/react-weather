@@ -1,3 +1,4 @@
+var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
@@ -25,5 +26,11 @@ module.exports = {
       }
     ]
   },
-  plugins: []
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    })
+  ]
 }
