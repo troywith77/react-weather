@@ -100,8 +100,7 @@ function getStyles(props) {
     flexDirection: props.direction || 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    maxWidth: 300,
-    alignSelf: 'right'
+    maxWidth: 300
   }
 }
 
